@@ -8,8 +8,6 @@ time_son = 7 # just number of your time zone
 textlmao = "(24 hours)" # leave blank for nothing
 Discord_Status = idle # Change circle status | dnd, idle, online
 # MAIN CODE
-load_dotenv(find_dotenv())
-
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
