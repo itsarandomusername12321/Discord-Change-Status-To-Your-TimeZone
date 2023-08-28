@@ -6,7 +6,7 @@ import datetime
 TICKET = "" # your token here
 time_son = 7 # just number of your time zone
 textlmao = "(24 hours)" # leave blank for nothing
-
+Discord_Status = idle # Change circle status | dnd, idle, online
 # MAIN CODE
 load_dotenv(find_dotenv())
 
@@ -73,7 +73,7 @@ def Main():
             check_second = time_check_before_run.second
             time.sleep(0.1)
         cls()
-        Run(discord, "idle") # Change circle status | dnd, idle, online
+        Run(discord, Discord_Status) 
 
 
 if __name__ == "__main__":
