@@ -1,18 +1,15 @@
 import sys, os, time, requests
-from dotenv import load_dotenv, find_dotenv
 import datetime
 
 # CONFIG HERE
-TICKET = "" # your token here
-time_son = 7 # just number of your time zone
-textlmao = "(24 hours)" # leave blank for nothing
-Discord_Status = idle # Change circle status | dnd, idle, online
+TICKET = input("Your token here : ") # your token here
+time_son = input("your timezone : ") # just number of your time zone
+Discord_status = input("Discord status you want to set to (dnd,idle,online) : ") # Change circle status | dnd, idle, online
 # MAIN CODE
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
 class Discord:
-    
     def __init__(self, token):
         self.token = token
         self.headers = {
@@ -36,11 +33,9 @@ def Run(discord, status,):
     unix_time = int(time.time())
     time_0 = datetime.datetime.utcfromtimestamp(unix_time)
     real_time = time_0 + datetime.timedelta(hours=time_son)
-    hour = real_time.hour
-    minute = real_time.minute
-    second = real_time.second
+    time12 = real_time.strftime("%I:%M %p")
     print(real_time)
-    message = "{:02d}:{:02d} {}".format(hour,minute,textlmao)
+    message = time12
     status_code = discord.ChangeStatus(status, message)
     if status_code == 200:
         print("|———————————————————————————————————|")
@@ -61,21 +56,15 @@ def Run(discord, status,):
         os.execv(sys.executable, ['python'] + sys.argv)
 
 def Main():
-    TOKEN = TICKET
-    discord = Discord(TOKEN)
+    discord = Discord(TICKET)
     while True:
-        time_check_before_run = datetime.datetime.now()
-        check_second = time_check_before_run.second
+        a = datetime.datetime.now()
+        check_second = a.second
         while check_second != 0:
             time_check_before_run = datetime.datetime.now()
             check_second = time_check_before_run.second
             time.sleep(0.1)
         cls()
-        Run(discord, Discord_Status) 
-
-
+        Run(discord, Discord_status) 
 if __name__ == "__main__":
     Main()
-else:
-    filename = os.path.basename(sys.argv[0])
-    print(f"{filename} is being imported into another module.")
