@@ -3,7 +3,7 @@ import datetime
 
 # CONFIG HERE
 TICKET = input("Your token here : ") # your token here
-time_son = input("your timezone : ") # just number of your time zone
+time_son = input("your timezone (example like GMT+7 then 7; or GMT-7 then -7) : ") # just number of your time zone
 Discord_status = input("Discord status you want to set to (dnd,idle,online) : ") # Change circle status | dnd, idle, online
 # MAIN CODE
 def cls():
